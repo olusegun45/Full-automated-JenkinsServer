@@ -56,3 +56,15 @@ Name = Jenkins-cicd-Admin-Role, then create.riger section select Github hook tri
 #####   To destroy the jenkins server:
 log in to ur Jenkins server, cd to /var/lib/jenkins/workspace/app-infra-pipeline, do ls you will see the terraform state files. then Run terraform destroy --auto-approve  from here.
 
+cd /var/lib/jenkins/workspace/app-infra-pipeline
+
+terraform destroy --auto-approve
+
+# Manually delete resources from aws when it is corrupted
+
+aws iam list-roles
+
+$ aws --region=<region-name> iam delete-instance-profile --instance-profile-name <profile_name>
+
+aws --region=us-east-2 iam delete-instance-profile --instance-profile-name dev-instance-profile
+
